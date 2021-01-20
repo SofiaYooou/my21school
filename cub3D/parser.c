@@ -15,13 +15,13 @@ void parser_resol (t_sofa *sofa, char **map)
         i++;
     if (map[0][i] >= '0' && map[0][i] <= '9')
         sofa->resol.Rone = ft_atoi(&map[0][i]);
-    while (map[0][i] >= '0' && map[0][i] <= '9')
+    // while (map[0][i] >= '0' && map[0][i] <= '9')
         i++;
     if (map[0][i] == ' ')
         i++;
     if (map[0][i] >= '0' && map[0][i] <= '9')
         sofa->resol.Rtwo = ft_atoi(&map[0][i]);
-    while (map[0][i] >= '0' && map[0][i] <= '9')
+    // while (map[0][i] >= '0' && map[0][i] <= '9')
         i++;
     // i = 0;
     // j = 1;
@@ -81,12 +81,11 @@ void parser_resol (t_sofa *sofa, char **map)
 int main (int argc, char **argv)
 {
     char    *line;
-    char    buf;
-	char	*buff;
+    char    *buf;
     int     fd;
     int     num;
     int     len;
-    t_sofa  sofa;
+    t_sofa  *sofa;
     (void)argc;
 
     len = 0;
@@ -97,40 +96,21 @@ int main (int argc, char **argv)
     close(fd);
     if ((fd = open(argv[1], O_RDONLY)) < 0)
         return(0);
-    if (!(buff = (char *)malloc(sizeof(char) * (len + 1))))
+    if (!(buf = (char *)malloc(sizeof(char) * (len + 1))))
         return (0);
-	get_next_line(fd, &line);
-	while (1)
-	{
-		if (*line == ' ')
-			break ;
-		get_next_line(fd, &line);
-	}
-	buff = ft_strjoin(line, "+");
-	while ((num = get_next_line(fd, &line)) != 0)
-	{
-		buff = ft_strjoin(buff, line);
-		buff = ft_strjoin(buff, "+");
-	}
-	buff = ft_strjoin(buff, line);
-	buff = ft_strjoin(buff, "+");
-	sofa.map = ft_split(buff, '+');
-	printf("%s", buff);
-    // num = read(fd, buff, len);
-    // buff[len] = '\0';
-    // if(!(sofa = (t_sofa*)malloc(sizeof(t_sofa))))
-    //     return (0);
-    // sofa.map = ft_split(buff, '\n');
-    // free(buff);
+    num = read(fd, buf, len);
+    buf[len] = '\0';
+    if(!(sofa = (t_sofa*)malloc(sizeof(t_sofa))))
+        return (0);
+    sofa->map = ft_split(buf, '\n');
+    free(buf);
     close(fd);
 	// while(*sofa->map)
     // {
     //     printf("%s\n", *sofa->map);
     //     sofa->map++;
     // }
-	if ((fd = open(argv[1], O_RDONLY)) < 0)
-        return(0);
-    // parser_resol(&sofa, sofa.map);
+	parser_resol(sofa, sofa->map);
     // printf("%d\n", sofa->resol.Rone);
     // printf("%d\n", sofa->resol.Rtwo);
     // printf("%d\n", sofa->resol.FR);
@@ -139,6 +119,6 @@ int main (int argc, char **argv)
     // printf("%d\n", sofa->resol.CR);
     // printf("%d\n", sofa->resol.CG);
     // printf("%d\n", sofa->resol.CB);
-    draw_1(&sofa);
+    draw_1(sofa);
     // return(0);
 }         
