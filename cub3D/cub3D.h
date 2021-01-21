@@ -29,8 +29,9 @@ typedef struct	plr //структура для игрока и луча
 {
 	float		x;
 	float		y;
-	float		z;
-	float		d;
+	// float		ray;
+	// float		ray_x;
+	// float		ray_y;
 	float		dir;
 	float		start;
 	float		end;

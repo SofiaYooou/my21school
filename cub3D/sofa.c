@@ -56,28 +56,28 @@ void    scale_plr(t_data *img, float x, float y, int color)
 	}
 }
 
-void    scale_ray(t_data *img, float x, float y, int color)
-{
-	// int scale;
-	float i;
-	float j;
+// void    scale_ray(t_data *img, float x, float y, int color)
+// {
+// 	// int scale;
+// 	float i;
+// 	float j;
 
-	// scale = 30;
-	x *= SCALE;
-	y *= SCALE;
-	i = y;
-	j = x;
-	while (i < (y + SCALE))
-	{
-		j = x;
-		while (j < (x + SCALE))
-		{
-			my_mlx_pixel_put(img, j, i, color);
-			j += 1.0;
-		}
-	i += 1.0;
-	}
-}
+// 	// scale = 30;
+// 	x *= SCALE;
+// 	y *= SCALE;
+// 	i = y;
+// 	j = x;
+// 	while (i < (y + SCALE))
+// 	{
+// 		j = x;
+// 		while (j < (x + SCALE))
+// 		{
+// 			my_mlx_pixel_put(img, j, i, color);
+// 			j += 1.0;
+// 		}
+// 	i += 1.0;
+// 	}
+// }
 
 void	ft_cast_ray(t_sofa *sofa)
 {
@@ -85,11 +85,31 @@ void	ft_cast_ray(t_sofa *sofa)
 
 	ray.x *= SCALE;
 	ray.y *= SCALE;
-	while (sofa->map[(int)(ray.y / SCALE)][(int)((ray.x / 2) / SCALE)] != '1')
+	while (sofa->map[(int)(ray.y / SCALE)][(int)(ray.x / SCALE)] != '1')
 	{
 		ray.x += cos(ray.dir);
 		ray.y += sin(ray.dir);
 		mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0xCAFF33);
+	}
+}
+
+void	ft_cast_rays(t_sofa *sofa)
+{
+	t_plr	ray = sofa->plr; // задаем координаты и направление луча равные координатам игрока
+	float start = ray.dir; // - [половина угла обзора]; // начало веера лучей
+	float end = ray.dir; // + [половина угла обзора]; // край веера лучей
+
+  while (ray.start <= ray.end)
+	{
+		ray.x = sofa->plr.x; // каждый раз возвращаемся в точку начала
+		ray.y = sofa->plr.y;
+		while (sofa->map[(int)(ray.y / SCALE)][(int)(ray.x / SCALE)] != '1')
+		{
+			ray.x += cos(ray.start);
+			ray.y += sin(ray.start);
+			mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0x990099);
+		}
+		// ray.start += //[угол обзора] / [количество лучей];
 	}
 }
 
@@ -138,11 +158,11 @@ int		key_hook(int keycode, t_sofa *sofa)
 	// printf("keycode = %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
-	if (keycode == 13 || keycode == 126) //up
+	if (keycode == 13) //up
 	{
 		sofa->plr.y -= 0.1;
 	}
-	if (keycode == 1 || keycode == 125) //down
+	if (keycode == 1) //down
 	{
 		sofa->plr.y += 0.1;
 	}
@@ -150,9 +170,17 @@ int		key_hook(int keycode, t_sofa *sofa)
 	{
 		sofa->plr.x -= 0.1;
 	}
-	if (keycode == 2 || keycode == 124) //right
+	if (keycode == 2) //right
 	{
 		sofa->plr.x += 0.1;
+	}
+	if (keycode == 126)
+	{
+		sofa->plr.dir -= 1;
+	}
+	if (keycode == 125)
+	{
+		sofa->plr.dir += 1;
 	}
 	mlx_clear_window(sofa->mlx, sofa->win);
 	fn_paint_map(sofa,  &sofa->data);
@@ -174,7 +202,8 @@ int     draw_1(t_sofa *sofa)
 	sofa->plr.move_y = 0;
 	sofa->plr.move_x = 0;
 	fn_paint_map(sofa, &sofa->data);
-	ft_cast_ray(sofa);
+	// ft_cast_ray(sofa);
+	ft_cast_rays(sofa);
 	mlx_hook(sofa->win, 2, 0, key_hook, sofa);
 	mlx_hook(sofa->win, 17, 0, exitb, sofa);
     mlx_loop(sofa->mlx);

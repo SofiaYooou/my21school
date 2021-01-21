@@ -80,7 +80,7 @@ void parser_resol (t_sofa *sofa, char **map)
 
 int main (int argc, char **argv)
 {
-    char    *line;
+    // char    *line;
     char    *buf;
     int     fd;
     int     num;
