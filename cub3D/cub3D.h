@@ -10,6 +10,7 @@
 #include "get_next_line/get_next_line.h"
 
 # define SCALE 30
+# define p 3.14
 typedef struct resol
 {
     int         R;

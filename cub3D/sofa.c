@@ -79,37 +79,38 @@ void    scale_plr(t_data *img, float x, float y, int color)
 // 	}
 // }
 
-void	ft_cast_ray(t_sofa *sofa)
-{
-	t_plr	ray = sofa->plr; // задаем координаты луча равные координатам игрока
+// void	ft_cast_ray(t_sofa *sofa)
+// {
+// 	t_plr	ray = sofa->plr; // задаем координаты луча равные координатам игрока
 
-	ray.x *= SCALE;
-	ray.y *= SCALE;
-	while (sofa->map[(int)(ray.y / SCALE)][(int)(ray.x / SCALE)] != '1')
-	{
-		ray.x += cos(ray.dir);
-		ray.y += sin(ray.dir);
-		mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0xCAFF33);
-	}
-}
+// 	ray.x *= SCALE;
+// 	ray.y *= SCALE;
+// 	while (sofa->map[(int)(ray.y / SCALE)][(int)(ray.x / SCALE)] != '1')
+// 	{
+// 		ray.x += cos(ray.dir);
+// 		ray.y += sin(ray.dir);
+// 		mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0xCAFF33);
+// 	}
+// }
 
 void	ft_cast_rays(t_sofa *sofa)
 {
 	t_plr	ray = sofa->plr; // задаем координаты и направление луча равные координатам игрока
-	float start = ray.dir; // - [половина угла обзора]; // начало веера лучей
-	float end = ray.dir; // + [половина угла обзора]; // край веера лучей
-
+	ray.start = ray.dir - p / 4; // - [половина угла обзора]; // начало веера лучей
+	ray.end = ray.dir + p / 4; // + [половина угла обзора]; // край веера лучей
   while (ray.start <= ray.end)
 	{
 		ray.x = sofa->plr.x; // каждый раз возвращаемся в точку начала
 		ray.y = sofa->plr.y;
+		ray.x *= SCALE + 0.5;
+ 		ray.y *= SCALE + 0.5;
 		while (sofa->map[(int)(ray.y / SCALE)][(int)(ray.x / SCALE)] != '1')
 		{
 			ray.x += cos(ray.start);
 			ray.y += sin(ray.start);
-			mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0x990099);
+			mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0xCAFF33);
 		}
-		// ray.start += //[угол обзора] / [количество лучей];
+		 ray.start += p / 60;  //[угол обзора] / [количество лучей];
 	}
 }
 
@@ -184,7 +185,7 @@ int		key_hook(int keycode, t_sofa *sofa)
 	}
 	mlx_clear_window(sofa->mlx, sofa->win);
 	fn_paint_map(sofa,  &sofa->data);
-	ft_cast_ray(sofa);
+	ft_cast_rays(sofa);
 	return (0);
 }
 
