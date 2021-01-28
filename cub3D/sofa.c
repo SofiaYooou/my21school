@@ -110,12 +110,14 @@ void	ft_cast_rays(t_sofa *sofa)
 			ray.y += sin(ray.start);
 			mlx_pixel_put(sofa->mlx, sofa->win, ray.x, ray.y, 0xCAFF33);
 		}
-		 ray.start += p / 60;  //[угол обзора] / [количество лучей];
+		 ray.start += p / 280;  //[угол обзора] / [количество лучей];
 	}
 }
 
 int		exitb(int keycode, t_sofa *sofa)
 {
+	(void)keycode;
+	(void)sofa;
 	exit(0);
 	return (1);
 }
@@ -177,11 +179,11 @@ int		key_hook(int keycode, t_sofa *sofa)
 	}
 	if (keycode == 126)
 	{
-		sofa->plr.dir -= 1;
+		sofa->plr.dir -= 0.5;
 	}
 	if (keycode == 125)
 	{
-		sofa->plr.dir += 1;
+		sofa->plr.dir += 0.5;
 	}
 	mlx_clear_window(sofa->mlx, sofa->win);
 	fn_paint_map(sofa,  &sofa->data);
