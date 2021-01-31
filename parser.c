@@ -1,26 +1,61 @@
 #include "cub3D.h"
 
-void parser_resol (t_sofa *sofa, char **map)
+void	parser_resol (t_sofa *sofa, char *map)
 {
     int i;
-    int j;
 
     i = 0;
-	j = 1;
 
-    if (map[j][i] == 'R')
-        sofa->resol.R = 1;
-    i++;
-    while (map[j][i] == ' ')
-        i++;
-    if (map[j][i] >= '0' && map[j][i] <= '9')
-        sofa->resol.Rone = ft_atoi(&map[0][i]);
-        i++;
-    if (map[j][i] == ' ')
-        i++;
-    if (map[0][i] >= '0' && map[0][i] <= '9')
-        sofa->resol.Rtwo = ft_atoi(&map[0][i]);
-        i++;
+    // while (map[i])
+	// {
+		// printf("%s", map[i]);
+		if (map[i] == 'R')
+    		sofa->resol.r = 1;
+    	i++;
+    	while (map[i] == ' ')
+			i++;
+		if (map[i] >= '0' && map[i] <= '9')
+    		sofa->resol.r_one = ft_atoi(&map[i]);
+		while (map[i] >= '0' && map[i] <= '9')
+			i++;
+    	while (map[i] == ' ')
+    		i++;
+    	if (map[i] >= '0' && map[i] <= '9')
+    		sofa->resol.r_two = ft_atoi(&map[i]);
+    	// i++;
+	// }
+}
+// void	parser_resol (t_sofa *sofa, char **map)
+// {
+//     int i;
+//     int j;
+
+//     i = 0;
+// 	j = 0;
+
+//     while (map[j])
+// 	{
+// 		i = 0;
+// 		while (map[j][i])
+// 		{
+// 			printf("%s", map[j]);
+// 			if (map[j][i] == 'R')
+//         		sofa->resol.r = 1;
+//     		i++;
+//     		while (map[j][i] == ' ')
+//          	i++;
+// 			if (map[j][i] >= '0' && map[j][i] <= '9')
+//         		sofa->resol.r_one = ft_atoi(&map[j][i]);
+//         	i++;
+//     		while (map[j][i] == ' ')
+//         		i++;
+//     		if (map[j][i] >= '0' && map[j][i] <= '9')
+//         		sofa->resol.r_two = ft_atoi(&map[j][i]);
+//         	i++;
+// 		}
+// 		j++;
+// 	}
+// }
     //i = 0;
     // j = 1;
     // while (map[j][i] == 'F' || map[j][i] == 'C')
@@ -72,9 +107,8 @@ void parser_resol (t_sofa *sofa, char **map)
     //     }
     //     j++;
     // }
-}
 
-void parse_direction(t_sofa *sofa, char **map)
+void	parse_direction(t_sofa *sofa, char **map)
 {
 	int i;
     int j;
@@ -87,66 +121,79 @@ void parse_direction(t_sofa *sofa, char **map)
 		{
 			if (map[j][i] >= 'N')
 			{
-				sofa->plr.posX = j;
-				sofa->plr.posY = i;
-				sofa->plr.dirX = -1;
-				sofa->plr.dirY = 0;
-				sofa->plr.planeX = -0.66;
-				sofa->plr.planeY = 0;
+				sofa->plr.pos_x = i;
+				sofa->plr.pos_y = j;
+				sofa->plr.dir_x = -1;
+				sofa->plr.dir_y = 0;
+				sofa->plr.plane_x = -0.66;
+				sofa->plr.plane_y = 0;
 			}
 			if (map[j][i] >= 'S')
 			{
 				j += 0.5;
 				i += 0.5;
-				j = sofa->plr.posX;
-				i = sofa->plr.posY;
-				sofa->plr.dirX = 1;
-				sofa->plr.dirY = 0;
-				sofa->plr.planeX = 0.66;
-				sofa->plr.planeY = 0;
+				sofa->plr.pos_x = i;
+				sofa->plr.pos_y = j;
+				sofa->plr.dir_x = 1;
+				sofa->plr.dir_y = 0;
+				sofa->plr.plane_x = 0.66;
+				sofa->plr.plane_y = 0;
 			}
 			if (map[j][i] >= 'E')
 			{
 				j += 0.5;
 				i += 0.5;
-				j = sofa->plr.posX;
-				i = sofa->plr.posY;
-				sofa->plr.dirX = 0;
-				sofa->plr.dirY = 1;
-				sofa->plr.planeX = 0;
-				sofa->plr.planeY = 0.66;
+				sofa->plr.pos_x = i;
+				sofa->plr.pos_y = j;
+				sofa->plr.dir_x = 0;
+				sofa->plr.dir_y = 1;
+				sofa->plr.plane_x = 0;
+				sofa->plr.plane_y = 0.66;
 			}
 			if (map[j][i] >= 'W')
 			{
 				j += 0.5;
 				i += 0.5;
-				j = sofa->plr.posX;
-				i = sofa->plr.posY;	
-				sofa->plr.dirX = 0;
-				sofa->plr.dirY = -1;
-				sofa->plr.planeX = 0;
-				sofa->plr.planeY = -0.66;
+				sofa->plr.pos_x = i;
+				sofa->plr.pos_y = j;	
+				sofa->plr.dir_x = 0;
+				sofa->plr.dir_y = -1;
+				sofa->plr.plane_x = 0;
+				sofa->plr.plane_y = -0.66;
 			}
 			i++;		
 		}
-	j++;
+		j++;
 	}
 }
 
-int parser_main(t_sofa *sofa, char **map)
+void		parser_main(t_sofa *sofa, char **map)
 {
-	while(map[i][j] != '\0')
+	int i;
+    int j;
+
+	i = 0;
+	j = 0;
+	while (map[j])
 	{
-		if (map[0][i] == 'R')
-			parser_resol (sofa, sofa->map);
-		if (map[j][i] >= 'E' || map[j][i] >= 'N' || map[j][i] >= 'S' || map[j][i] >= 'W')
-			sofa->plr.pos_x = j;
-			sofa->plr.pos_y = i;
-			parse_direction(sofa, sofa->map);
+		i = 0;
+		while (map[j][i] != '\0')
+		{
+			if (map[j][i] == 'R')
+				parser_resol (sofa, map[j]); //sofa->map);
+			if (map[j][i] >= 'E' || map[j][i] >= 'N' || map[j][i] >= 'S' || map[j][i] >= 'W')
+			{
+				sofa->plr.pos_x = i;
+				sofa->plr.pos_y = j;
+				parse_direction(sofa, sofa->map);
+			}
+			i++;
+		}
+		j++;
 	}
 }
 
-int main (int argc, char **argv)
+int		main (int argc, char **argv)
 {
     // char    *line;
     char    *buf;
