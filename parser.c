@@ -125,8 +125,8 @@ void	parse_direction(t_sofa *sofa, char **map)
 				sofa->plr.pos_y = j;
 				sofa->plr.dir_x = -1;
 				sofa->plr.dir_y = 0;
-				sofa->plr.plane_x = -0.66;
-				sofa->plr.plane_y = 0;
+				sofa->plr.plane_x = 0;
+				sofa->plr.plane_y = 0.66;
 			}
 			if (map[j][i] >= 'S')
 			{
@@ -136,8 +136,8 @@ void	parse_direction(t_sofa *sofa, char **map)
 				sofa->plr.pos_y = j;
 				sofa->plr.dir_x = 1;
 				sofa->plr.dir_y = 0;
-				sofa->plr.plane_x = 0.66;
-				sofa->plr.plane_y = 0;
+				sofa->plr.plane_x = 0;
+				sofa->plr.plane_y = -0.66;
 			}
 			if (map[j][i] >= 'E')
 			{
@@ -147,8 +147,8 @@ void	parse_direction(t_sofa *sofa, char **map)
 				sofa->plr.pos_y = j;
 				sofa->plr.dir_x = 0;
 				sofa->plr.dir_y = 1;
-				sofa->plr.plane_x = 0;
-				sofa->plr.plane_y = 0.66;
+				sofa->plr.plane_x = 0.66;
+				sofa->plr.plane_y = 0;
 			}
 			if (map[j][i] >= 'W')
 			{
@@ -158,8 +158,8 @@ void	parse_direction(t_sofa *sofa, char **map)
 				sofa->plr.pos_y = j;	
 				sofa->plr.dir_x = 0;
 				sofa->plr.dir_y = -1;
-				sofa->plr.plane_x = 0;
-				sofa->plr.plane_y = -0.66;
+				sofa->plr.plane_x = -0.66;
+				sofa->plr.plane_y = 0;
 			}
 			i++;		
 		}

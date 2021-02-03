@@ -64,13 +64,13 @@ void	raicacting(t_sofa *sofa)
 			sofa->maps.perp_wall_dist = (sofa->maps.maps_x - sofa->plr.pos_x + (1 - sofa->maps.step_x) / 2) / sofa->plr.raydir_x;
 		else
 			sofa->maps.perp_wall_dist = (sofa->maps.maps_y - sofa->plr.pos_y + (1 - sofa->maps.step_y) / 2) / sofa->plr.raydir_y;
-		sofa->maps.line_heigh = sofa->resol.r_one / sofa->maps.perp_wall_dist;
-		sofa->maps.draw_start = -sofa->maps.line_heigh / 2 + sofa->resol.r_one / 2;
+		sofa->maps.line_heigh = sofa->resol.r_two / sofa->maps.perp_wall_dist;
+		sofa->maps.draw_start = -sofa->maps.line_heigh / 2 + sofa->resol.r_two / 2;
 		if (sofa->maps.draw_start < 0 )
 			sofa->maps.draw_start = 0;
-		sofa->maps.draw_end = sofa->maps.line_heigh / 2 + sofa->resol.r_one / 2;
-		if (sofa->maps.draw_end >= sofa->resol.r_one)
-			sofa->maps.draw_end = sofa->resol.r_one - 1;
+		sofa->maps.draw_end = sofa->maps.line_heigh / 2 + sofa->resol.r_two / 2;
+		if (sofa->maps.draw_end >= sofa->resol.r_two)
+			sofa->maps.draw_end = sofa->resol.r_two - 1;
 		y = sofa->maps.draw_start;
 		// = sofa->maps.draw_end;
 		while (y < sofa->maps.draw_end)

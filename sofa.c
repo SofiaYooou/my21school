@@ -209,6 +209,7 @@ int     draw_1(t_sofa *sofa)
 	// ft_cast_rays(sofa);
 	// mlx_hook(sofa->win, 2, 0, key_hook, sofa);
 	// mlx_hook(sofa->win, 17, 0, exitb, sofa);
+	mlx_put_image_to_window(sofa->mlx, sofa->win, sofa->data.img, 0, 0);
     mlx_loop(sofa->mlx);
 	// printf("%d\n", sofa->resol.r_one);
 	// printf("%d\n", sofa->resol.r_two);
