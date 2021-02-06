@@ -158,7 +158,9 @@ void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 // int		key_hook(int keycode, t_sofa *sofa)
 // {
-// 	// printf("keycode = %d\n", keycode);
+// 	(void)keycode;
+// 	(void)sofa;
+// 	printf("keycode = %d\n", keycode);
 // 	if (keycode == 53)
 // 		exit(0);
 // 	if (keycode == 13) //up
@@ -185,11 +187,11 @@ void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // 	{
 // 		sofa->plr.dir += 0.5;
 // 	}
-// 	mlx_clear_window(sofa->mlx, sofa->win);
-// 	fn_paint_map(sofa,  &sofa->data);
-// 	ft_cast_rays(sofa);
+// 	// mlx_clear_window(sofa->mlx, sofa->win);
+// 	// fn_paint_map(sofa,  &sofa->data);
+// 	// ft_cast_rays(sofa);
 // 	return (0);
-// }
+//  }
 
 int     draw_1(t_sofa *sofa)
 {
@@ -204,10 +206,10 @@ int     draw_1(t_sofa *sofa)
                                  &sofa->data.endian);
 	sofa->plr.move_y = 0;
 	sofa->plr.move_x = 0;
-	raicacting(sofa);
+	raycasting(sofa);
 	// ft_cast_ray(sofa);
 	// ft_cast_rays(sofa);
-	// mlx_hook(sofa->win, 2, 0, key_hook, sofa);
+	mlx_hook(sofa->win, 2, 0, key_hook, sofa);
 	// mlx_hook(sofa->win, 17, 0, exitb, sofa);
 	mlx_put_image_to_window(sofa->mlx, sofa->win, sofa->data.img, 0, 0);
     mlx_loop(sofa->mlx);

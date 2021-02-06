@@ -93,6 +93,7 @@ void            parser_resol(t_sofa *sofa, char *map);
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int             draw_1(t_sofa *sofa);
 void			fn_paint_map(t_sofa *sofa, t_data *img);
-void				raicacting (t_sofa *sofa);
+void			raycasting (t_sofa *sofa);
+int				key_hook(int keycode, t_sofa *sofa);
 
 #endif

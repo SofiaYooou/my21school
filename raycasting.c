@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void	raicacting(t_sofa *sofa)
+void	raycasting(t_sofa *sofa)
 {
 	int x; //координата в пространстве камеры
 	int i;
