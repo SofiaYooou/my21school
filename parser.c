@@ -25,92 +25,68 @@ void	parser_resol (t_sofa *sofa, char *map)
     	// i++;
 	// }
 }
-// void	parser_resol (t_sofa *sofa, char **map)
+// void	parser_pol(t_sofa *sofa, char **map)
 // {
 //     int i;
 //     int j;
 
 //     i = 0;
-// 	j = 0;
-
-//     while (map[j])
-// 	{
-// 		i = 0;
-// 		while (map[j][i])
-// 		{
-// 			printf("%s", map[j]);
-// 			if (map[j][i] == 'R')
-//         		sofa->resol.r = 1;
-//     		i++;
-//     		while (map[j][i] == ' ')
-//          	i++;
-// 			if (map[j][i] >= '0' && map[j][i] <= '9')
-//         		sofa->resol.r_one = ft_atoi(&map[j][i]);
-//         	i++;
-//     		while (map[j][i] == ' ')
-//         		i++;
-//     		if (map[j][i] >= '0' && map[j][i] <= '9')
-//         		sofa->resol.r_two = ft_atoi(&map[j][i]);
-//         	i++;
-// 		}
-// 		j++;
-// 	}
-// }
-    //i = 0;
-    // j = 1;
-    // while (map[j][i] == 'F' || map[j][i] == 'C')
-    // {
-    // i = 0;
-    //     if (map[j][i] == 'F')
-    //     {
-    //         sofa->resol.F = 1;
-    //         while (map[j][i] == ' ')
-    //             i++;
-    //         if (map[j][i] >= '0' && map[j][i] <= '9')
-    //             sofa->resol.FR = ft_atoi(&map[j][i]);
-    //         while (map[j][i] >= '0' && map[j][i] <= '9')
-    //             i++;
-    //         if (map[j][i] == ',')
-    //             i++;
-    //         if (map[j][i] >= '0' && map[j][i] <= '9')
-    //             sofa->resol.FG = ft_atoi(&map[j][i]);
-    //         while (map[j][i] >= '0' && map[j][i] <= '9')
-    //             i++;
-    //         if (map[j][i] == ',')
-    //             i++;
-    //         if (map[j][i] >= '0' && map[j][i] <= '9')
-    //             sofa->resol.FB = ft_atoi(&map[j][i]);
-    //         while (map[j][i] >= '0' && map[j][i] <= '9')
-    //             i++;
-    //     }
-    //     else
-    //     {
-    //         sofa->resol.C = 1;
-    //         while (map[j][i] == ' ')
-    //             i++;
-    //         if (map[j][i] >= '0' && map[1][i] <= '9')
-    //             sofa->resol.CR = ft_atoi(&map[j][i]);
-    //         while (map[1][i] >= '0' && map[j][i] <= '9')
-    //             i++;
-    //         if (map[j][i] == ',')
-    //             i++;
-    //         if (map[j][i] >= '0' && map[1][i] <= '9')
-    //             sofa->resol.CG = ft_atoi(&map[j][i]);
-    //         while (map[1][i] >= '0' && map[j][i] <= '9')
-    //             i++;
-    //         if (map[j][i] == ',')
-    //             i++;
-    //         if (map[j][i] >= '0' && map[1][i] <= '9')
-    //             sofa->resol.CB = ft_atoi(&map[j][i]);
-    //         while (map[j][i] >= '0' && map[j][i] <= '9')
-    //             i++;
-    //     }
-    //     j++;
-    // }
+//     j = 1;
+//     while (map[j][i] == 'F' || map[j][i] == 'C')
+//     {
+//     i = 0;
+//         if (map[j][i] == 'F')
+//         {
+//             sofa->resol.f = 1;
+//             while (map[j][i] == ' ')
+//                 i++;
+//             if (map[j][i] >= '0' && map[j][i] <= '9')
+//                 sofa->resol.fr = ft_atoi(&map[j][i]);
+//             while (map[j][i] >= '0' && map[j][i] <= '9')
+//                 i++;
+//             if (map[j][i] == ',' || map[j][i] ' ')
+//                 i++;
+//             if (map[j][i] >= '0' && map[j][i] <= '9')
+//                 sofa->resol.fg = ft_atoi(&map[j][i]);
+//             while (map[j][i] >= '0' && map[j][i] <= '9')
+//                 i++;
+//             if (map[j][i] == ',')
+//                 i++;
+//             if (map[j][i] >= '0' && map[j][i] <= '9')
+//                 sofa->resol.fb = ft_atoi(&map[j][i]);
+//             while (map[j][i] >= '0' && map[j][i] <= '9')
+//                 i++;
+// 			sofa->resol.f_resol = (sofa->resol.fr << 16 | sofa->resol.fg << 8 | sofa->resol.fb)
+//         }
+//         else
+//         {
+//             sofa->resol.c = 1;
+//             while (map[j][i] == ' ')
+//                 i++;
+//             if (map[j][i] >= '0' && map[1][i] <= '9')
+//                 sofa->resol.cr = ft_atoi(&map[j][i]);
+//             while (map[1][i] >= '0' && map[j][i] <= '9')
+//                 i++;
+//             if (map[j][i] == ',')
+//                 i++;
+//             if (map[j][i] >= '0' && map[1][i] <= '9')
+//                 sofa->resol.cg = ft_atoi(&map[j][i]);
+//             while (map[1][i] >= '0' && map[j][i] <= '9')
+//                 i++;
+//             if (map[j][i] == ',')
+//                 i++;
+//             if (map[j][i] >= '0' && map[1][i] <= '9')
+//                 sofa->resol.cb = ft_atoi(&map[j][i]);
+//             while (map[j][i] >= '0' && map[j][i] <= '9')
+//                 i++;
+//         }
+//         j++;
+// 		sofa->resol.c_resol = (sofa->resol.cr << 16 | sofa->resol.cg << 8 | sofa->resol.cb)
+//     }
 
 void	parse_direction(t_sofa *sofa, char **map)
 {
-	int i;
+	int	i;
     int j;
 
 	j = 0;
@@ -119,43 +95,29 @@ void	parse_direction(t_sofa *sofa, char **map)
     	i = 0;
 		while (map[j][i])
 		{
-			if (map[j][i] >= 'N')
+			if (map[j][i] == 'N')
 			{
-				sofa->plr.pos_x = i;
-				sofa->plr.pos_y = j;
 				sofa->plr.dir_x = -1;
 				sofa->plr.dir_y = 0;
 				sofa->plr.plane_x = 0;
 				sofa->plr.plane_y = 0.66;
 			}
-			if (map[j][i] >= 'S')
+			if (map[j][i] == 'S')
 			{
-				j += 0.5;
-				i += 0.5;
-				sofa->plr.pos_x = i;
-				sofa->plr.pos_y = j;
 				sofa->plr.dir_x = 1;
 				sofa->plr.dir_y = 0;
 				sofa->plr.plane_x = 0;
 				sofa->plr.plane_y = -0.66;
 			}
-			if (map[j][i] >= 'E')
+			if (map[j][i] == 'E')
 			{
-				j += 0.5;
-				i += 0.5;
-				sofa->plr.pos_x = i;
-				sofa->plr.pos_y = j;
 				sofa->plr.dir_x = 0;
 				sofa->plr.dir_y = 1;
 				sofa->plr.plane_x = 0.66;
 				sofa->plr.plane_y = 0;
 			}
-			if (map[j][i] >= 'W')
+			if (map[j][i] == 'W')
 			{
-				j += 0.5;
-				i += 0.5;
-				sofa->plr.pos_x = i;
-				sofa->plr.pos_y = j;	
 				sofa->plr.dir_x = 0;
 				sofa->plr.dir_y = -1;
 				sofa->plr.plane_x = -0.66;
@@ -181,10 +143,12 @@ void		parser_main(t_sofa *sofa, char **map)
 		{
 			if (map[j][i] == 'R')
 				parser_resol (sofa, map[j]); //sofa->map);
-			if (map[j][i] >= 'E' || map[j][i] >= 'N' || map[j][i] >= 'S' || map[j][i] >= 'W')
+			// if (map[j][i] == 'F' || map[j][i] == 'C')
+			// 	parser_pol (sofa, map[j]);
+			if (map[j][i] == 'E' || map[j][i] == 'N' || map[j][i] == 'S' || map[j][i] == 'W')
 			{
-				sofa->plr.pos_x = i;
-				sofa->plr.pos_y = j;
+				sofa->plr.pos_x = j + 0.5;
+				sofa->plr.pos_y = i + 0.5;
 				parse_direction(sofa, sofa->map);
 			}
 			i++;

@@ -193,27 +193,27 @@ void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // 	return (0);
 //  }
 
-int     draw_1(t_sofa *sofa)
-{
-    // void    *mlx;
-    // void    *mlx_win;
-    // t_data  img;
+// int     draw_1(t_sofa *sofa)
+// {
+//     // void    *mlx;
+//     // void    *mlx_win;
+//     // t_data  img;
 
-    sofa->mlx = mlx_init();
-    sofa->win = mlx_new_window(sofa->mlx, sofa->resol.r_one, sofa->resol.r_two, "SOFA");
-    sofa->data.img = mlx_new_image(sofa->mlx, sofa->resol.r_one, sofa->resol.r_two);
-    sofa->data.addr = mlx_get_data_addr(sofa->data.img, &sofa->data.bits_per_pixel, &sofa->data.line_length,
-                                 &sofa->data.endian);
-	sofa->plr.move_y = 0;
-	sofa->plr.move_x = 0;
-	raycasting(sofa);
-	// ft_cast_ray(sofa);
-	// ft_cast_rays(sofa);
-	mlx_hook(sofa->win, 2, 0, key_hook, sofa);
-	// mlx_hook(sofa->win, 17, 0, exitb, sofa);
-	mlx_put_image_to_window(sofa->mlx, sofa->win, sofa->data.img, 0, 0);
-    mlx_loop(sofa->mlx);
-	// printf("%d\n", sofa->resol.r_one);
-	// printf("%d\n", sofa->resol.r_two);
-    return(0);
-}
+//     sofa->mlx = mlx_init();
+//     sofa->win = mlx_new_window(sofa->mlx, sofa->resol.r_one, sofa->resol.r_two, "SOFA");
+//     sofa->data.img = mlx_new_image(sofa->mlx, sofa->resol.r_one, sofa->resol.r_two);
+//     sofa->data.addr = mlx_get_data_addr(sofa->data.img, &sofa->data.bits_per_pixel, &sofa->data.line_length,
+//                                  &sofa->data.endian);
+// 	sofa->plr.move_y = 0;
+// 	sofa->plr.move_x = 0;
+// 	raycasting(sofa);
+// 	// ft_cast_ray(sofa);
+// 	// ft_cast_rays(sofa);
+// 	mlx_hook(sofa->win, 2, 0, key_hook, sofa);
+// 	// mlx_hook(sofa->win, 17, 0, exitb, sofa);
+// 	mlx_put_image_to_window(sofa->mlx, sofa->win, sofa->data.img, 0, 0);
+//     mlx_loop(sofa->mlx);
+// 	// printf("%d\n", sofa->resol.r_one);
+// 	// printf("%d\n", sofa->resol.r_two);
+//     return(0);
+// }

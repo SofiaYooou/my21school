@@ -17,14 +17,16 @@ typedef struct resol
     int         r;
     int         r_one;
     int         r_two;
-    int         F;
-    int         C;
-    int         FR;
-    int         FG;
-    int         FB;
-    int         CR;
-    int         CG;
-    int         CB;
+	int			f_resol;
+	int			c_resol;
+    int         f;
+    int         c;
+    int         fr;
+    int         fg;
+    int         fb;
+    int         cr;
+    int         cg;
+    int         cb;
 }               t_resol;
 
 typedef struct maps
@@ -47,26 +49,28 @@ typedef struct maps
 
 typedef struct	plr //структура для игрока и луча
 {
-	float		x;
-	float		y;
-	float		ray;
+	// float		x;
+	// float		y;
+	// float		ray;
 	double		camera_x;
-	float		ray_x;
-	float		ray_y;
-	double		ray_dir;
+	// float		ray_x;
+	// float		ray_y;
+	// double		ray_dir;
 	double		raydir_x;
 	double		raydir_y; //направление луча
-	double		pos_x;  //вектор положения игрокаб начало луча
-	double		pos_y;
-	double		dir_x;  //направление игрока
-	double		dir_y;
-	float		dir;
-	double		plane_x; //плоскость камеры игрока
-	double		plane_y;
-	float		start;
-	float		end;
-	float		move_x;
-	float		move_y;
+	double			pos_x;  //положения игрокаб начало луча
+	double			pos_y;
+	double		old_dir_x;
+	double			dir_x;  //направление игрока
+	double			dir_y;
+	// float		dir;
+	double		old_plane_x;
+	double			plane_x; //плоскость камеры игрока
+	double			plane_y;
+	// float		start;
+	// float		end;
+	// float		move_x;
+	// float		move_y;
 }				t_plr;
 
 typedef struct  s_data 
